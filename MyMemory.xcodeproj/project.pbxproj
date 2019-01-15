@@ -7,14 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C314A01C21EE09AB006946DF /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C314A01B21EE09AB006946DF /* ListVC.swift */; };
+		C314A02221EE0A35006946DF /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C314A02121EE0A35006946DF /* ListCell.swift */; };
+		C314A02421EE0A5C006946DF /* MemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C314A02321EE0A5C006946DF /* MemoData.swift */; };
 		C331E0F621EDFE23006F59C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331E0F521EDFE23006F59C0 /* AppDelegate.swift */; };
 		C331E0FB21EDFE23006F59C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C331E0F921EDFE23006F59C0 /* Main.storyboard */; };
 		C331E0FE21EDFE23006F59C0 /* MyMemory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C331E0FC21EDFE23006F59C0 /* MyMemory.xcdatamodeld */; };
 		C331E10021EDFE25006F59C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C331E0FF21EDFE25006F59C0 /* Assets.xcassets */; };
 		C331E10321EDFE25006F59C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C331E10121EDFE25006F59C0 /* LaunchScreen.storyboard */; };
+		C3E1601321EE0C5D00086D7B /* ReadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E1601221EE0C5D00086D7B /* ReadVC.swift */; };
+		C3E1601521EE0C6800086D7B /* MemoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E1601421EE0C6800086D7B /* MemoVC.swift */; };
+		C3E1601821EE1FDC00086D7B /* LaunchScreen.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C3E1601721EE1FDC00086D7B /* LaunchScreen.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C314A01B21EE09AB006946DF /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
+		C314A02121EE0A35006946DF /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
+		C314A02321EE0A5C006946DF /* MemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoData.swift; sourceTree = "<group>"; };
 		C331E0F221EDFE23006F59C0 /* MyMemory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMemory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C331E0F521EDFE23006F59C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C331E0FA21EDFE23006F59C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -22,6 +31,9 @@
 		C331E0FF21EDFE25006F59C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C331E10221EDFE25006F59C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C331E10421EDFE25006F59C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3E1601221EE0C5D00086D7B /* ReadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadVC.swift; sourceTree = "<group>"; };
+		C3E1601421EE0C6800086D7B /* MemoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoVC.swift; sourceTree = "<group>"; };
+		C3E1601721EE1FDC00086D7B /* LaunchScreen.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = LaunchScreen.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +66,28 @@
 		C331E0F421EDFE23006F59C0 /* MyMemory */ = {
 			isa = PBXGroup;
 			children = (
+				C3E1601621EE1FA800086D7B /* Resources */,
 				C331E0F521EDFE23006F59C0 /* AppDelegate.swift */,
 				C331E0F921EDFE23006F59C0 /* Main.storyboard */,
 				C331E0FF21EDFE25006F59C0 /* Assets.xcassets */,
 				C331E10121EDFE25006F59C0 /* LaunchScreen.storyboard */,
 				C331E10421EDFE25006F59C0 /* Info.plist */,
 				C331E0FC21EDFE23006F59C0 /* MyMemory.xcdatamodeld */,
+				C314A02321EE0A5C006946DF /* MemoData.swift */,
+				C314A01B21EE09AB006946DF /* ListVC.swift */,
+				C314A02121EE0A35006946DF /* ListCell.swift */,
+				C3E1601421EE0C6800086D7B /* MemoVC.swift */,
+				C3E1601221EE0C5D00086D7B /* ReadVC.swift */,
 			);
 			path = MyMemory;
+			sourceTree = "<group>";
+		};
+		C3E1601621EE1FA800086D7B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C3E1601721EE1FDC00086D7B /* LaunchScreen.jpeg */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C331E10321EDFE25006F59C0 /* LaunchScreen.storyboard in Resources */,
+				C3E1601821EE1FDC00086D7B /* LaunchScreen.jpeg in Resources */,
 				C331E10021EDFE25006F59C0 /* Assets.xcassets in Resources */,
 				C331E0FB21EDFE23006F59C0 /* Main.storyboard in Resources */,
 			);
@@ -135,8 +162,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3E1601321EE0C5D00086D7B /* ReadVC.swift in Sources */,
+				C314A01C21EE09AB006946DF /* ListVC.swift in Sources */,
+				C314A02421EE0A5C006946DF /* MemoData.swift in Sources */,
+				C314A02221EE0A35006946DF /* ListCell.swift in Sources */,
 				C331E0FE21EDFE23006F59C0 /* MyMemory.xcdatamodeld in Sources */,
 				C331E0F621EDFE23006F59C0 /* AppDelegate.swift in Sources */,
+				C3E1601521EE0C6800086D7B /* MemoVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,7 +320,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hkim.MyMemory;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hkim.memoit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -305,7 +337,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hkim.MyMemory;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hkim.memoit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
