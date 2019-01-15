@@ -50,7 +50,7 @@
 		C331E0E921EDFE23006F59C0 = {
 			isa = PBXGroup;
 			children = (
-				C331E0F421EDFE23006F59C0 /* MyMemory */,
+				C331E0F421EDFE23006F59C0 /* Memo IT */,
 				C331E0F321EDFE23006F59C0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,7 +63,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C331E0F421EDFE23006F59C0 /* MyMemory */ = {
+		C331E0F421EDFE23006F59C0 /* Memo IT */ = {
 			isa = PBXGroup;
 			children = (
 				C3E1601621EE1FA800086D7B /* Resources */,
@@ -79,7 +79,7 @@
 				C3E1601421EE0C6800086D7B /* MemoVC.swift */,
 				C3E1601221EE0C5D00086D7B /* ReadVC.swift */,
 			);
-			path = MyMemory;
+			path = "Memo IT";
 			sourceTree = "<group>";
 		};
 		C3E1601621EE1FA800086D7B /* Resources */ = {
