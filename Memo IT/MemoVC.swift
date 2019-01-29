@@ -7,16 +7,19 @@
 //
 
 import UIKit
+import GoogleSignIn
 
-class MemoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
+class MemoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, GIDSignInUIDelegate {
     @IBOutlet var contentTV: UITextView!
     @IBOutlet var contentIV: UIImageView!
+    @IBOutlet weak var signInButton: GIDSignInButton!
     var mTitle: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.contentTV.delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
     }
     
     // MARK: - Bar icon actions
