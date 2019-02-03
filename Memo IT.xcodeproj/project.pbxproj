@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		606BE48F2206981700A47939 /* HKLogButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606BE48E2206981700A47939 /* HKLogButton.swift */; };
+		606BE4932206988C00A47939 /* btnGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 606BE4902206988C00A47939 /* btnGreen.png */; };
+		606BE4942206988C00A47939 /* imgMemo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 606BE4912206988C00A47939 /* imgMemo@2x.png */; };
+		606BE4952206988C00A47939 /* icoWarning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 606BE4922206988C00A47939 /* icoWarning@2x.png */; };
 		7763BB3321FC791E00B37E1D /* SignVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7763BB3221FC791E00B37E1D /* SignVC.swift */; };
 		C314A01C21EE09AB006946DF /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C314A01B21EE09AB006946DF /* ListVC.swift */; };
 		C314A02221EE0A35006946DF /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C314A02121EE0A35006946DF /* ListCell.swift */; };
@@ -23,6 +27,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		606BE48E2206981700A47939 /* HKLogButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKLogButton.swift; sourceTree = "<group>"; };
+		606BE4902206988C00A47939 /* btnGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnGreen.png; sourceTree = "<group>"; };
+		606BE4912206988C00A47939 /* imgMemo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imgMemo@2x.png"; sourceTree = "<group>"; };
+		606BE4922206988C00A47939 /* icoWarning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icoWarning@2x.png"; sourceTree = "<group>"; };
 		7763BB3221FC791E00B37E1D /* SignVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignVC.swift; sourceTree = "<group>"; };
 		8ED8DEB9BD0E96EE26A2962D /* Pods-MyMemory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMemory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyMemory/Pods-MyMemory.debug.xcconfig"; sourceTree = "<group>"; };
 		988D18F5AB67231F044C3429 /* Pods_MyMemory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyMemory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +62,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		606BE48D2206980100A47939 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				606BE48E2206981700A47939 /* HKLogButton.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		6BF4CBC1844896A7030B216C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +108,7 @@
 		C331E0F421EDFE23006F59C0 /* Memo IT */ = {
 			isa = PBXGroup;
 			children = (
+				606BE48D2206980100A47939 /* Classes */,
 				C3E1601621EE1FA800086D7B /* Resources */,
 				C331E0F521EDFE23006F59C0 /* AppDelegate.swift */,
 				C331E0F921EDFE23006F59C0 /* Main.storyboard */,
@@ -113,6 +130,9 @@
 			isa = PBXGroup;
 			children = (
 				C3E1601721EE1FDC00086D7B /* LaunchScreen.jpeg */,
+				606BE4902206988C00A47939 /* btnGreen.png */,
+				606BE4912206988C00A47939 /* imgMemo@2x.png */,
+				606BE4922206988C00A47939 /* icoWarning@2x.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -179,9 +199,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C331E10321EDFE25006F59C0 /* LaunchScreen.storyboard in Resources */,
+				606BE4932206988C00A47939 /* btnGreen.png in Resources */,
 				C3E1601821EE1FDC00086D7B /* LaunchScreen.jpeg in Resources */,
 				C331E10021EDFE25006F59C0 /* Assets.xcassets in Resources */,
+				606BE4942206988C00A47939 /* imgMemo@2x.png in Resources */,
 				C331E0FB21EDFE23006F59C0 /* Main.storyboard in Resources */,
+				606BE4952206988C00A47939 /* icoWarning@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				606BE48F2206981700A47939 /* HKLogButton.swift in Sources */,
 				C3E1601321EE0C5D00086D7B /* ReadVC.swift in Sources */,
 				7763BB3321FC791E00B37E1D /* SignVC.swift in Sources */,
 				C314A01C21EE09AB006946DF /* ListVC.swift in Sources */,
@@ -417,7 +441,9 @@
 			baseConfigurationReference = 8ED8DEB9BD0E96EE26A2962D /* Pods-MyMemory.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Memo IT/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -426,6 +452,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hkim.memoit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -436,7 +463,9 @@
 			baseConfigurationReference = B40D7847B635B033FB5FBEC6 /* Pods-MyMemory.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Memo IT/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -445,6 +474,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hkim.memoit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

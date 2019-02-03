@@ -21,7 +21,17 @@
                         <view key="tableFooterView" contentMode="scaleToFill" id="S4p-Zd-j8p">
                             <rect key="frame" x="0.0" y="188" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fX5-T6-zoQ" customClass="HKLogButton" customModule="MyMemory" customModuleProvider="target">
+                                    <rect key="frame" x="144" y="8" width="77" height="30"/>
+                                    <state key="normal" title="Show More"/>
+                                </button>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="fX5-T6-zoQ" firstAttribute="centerY" secondItem="S4p-Zd-j8p" secondAttribute="centerY" id="VQJ-lz-s5S"/>
+                                <constraint firstItem="fX5-T6-zoQ" firstAttribute="centerX" secondItem="S4p-Zd-j8p" secondAttribute="centerX" id="iUV-gS-3y8"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="memoCell" rowHeight="80" id="1Xb-9z-grC" customClass="ListCell" customModule="MyMemory" customModuleProvider="target">
