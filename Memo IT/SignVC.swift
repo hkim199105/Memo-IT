@@ -17,8 +17,8 @@ class SignVC: UIViewController, GIDSignInUIDelegate {
         
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().signInSilently()
-        GIDGoogleUser *user = [GIDSignIn sharedInstance].currentUser;
-        
+//        GIDGoogleUser *user = [GIDSignIn sharedInstance].currentUser
+
     }
     
     @IBAction func didTapSignOut(_ sender: AnyObject) {
