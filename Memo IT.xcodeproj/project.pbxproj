@@ -11,6 +11,8 @@
 		606BE4932206988C00A47939 /* btnGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 606BE4902206988C00A47939 /* btnGreen.png */; };
 		606BE4942206988C00A47939 /* imgMemo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 606BE4912206988C00A47939 /* imgMemo@2x.png */; };
 		606BE4952206988C00A47939 /* icoWarning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 606BE4922206988C00A47939 /* icoWarning@2x.png */; };
+		606BE4992206BB2400A47939 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 606BE4972206BB2400A47939 /* SWRevealViewController.m */; };
+		606BE49B2206BB7500A47939 /* icoMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 606BE49A2206BB7500A47939 /* icoMenu.png */; };
 		7763BB3321FC791E00B37E1D /* SignVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7763BB3221FC791E00B37E1D /* SignVC.swift */; };
 		C314A01C21EE09AB006946DF /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C314A01B21EE09AB006946DF /* ListVC.swift */; };
 		C314A02221EE0A35006946DF /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C314A02121EE0A35006946DF /* ListCell.swift */; };
@@ -31,6 +33,10 @@
 		606BE4902206988C00A47939 /* btnGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnGreen.png; sourceTree = "<group>"; };
 		606BE4912206988C00A47939 /* imgMemo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imgMemo@2x.png"; sourceTree = "<group>"; };
 		606BE4922206988C00A47939 /* icoWarning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icoWarning@2x.png"; sourceTree = "<group>"; };
+		606BE4962206BB2300A47939 /* MyMemory-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyMemory-Bridging-Header.h"; sourceTree = "<group>"; };
+		606BE4972206BB2400A47939 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		606BE4982206BB2400A47939 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		606BE49A2206BB7500A47939 /* icoMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icoMenu.png; sourceTree = "<group>"; };
 		7763BB3221FC791E00B37E1D /* SignVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignVC.swift; sourceTree = "<group>"; };
 		8ED8DEB9BD0E96EE26A2962D /* Pods-MyMemory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMemory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyMemory/Pods-MyMemory.debug.xcconfig"; sourceTree = "<group>"; };
 		988D18F5AB67231F044C3429 /* Pods_MyMemory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyMemory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +72,9 @@
 			isa = PBXGroup;
 			children = (
 				606BE48E2206981700A47939 /* HKLogButton.swift */,
+				606BE4982206BB2400A47939 /* SWRevealViewController.h */,
+				606BE4972206BB2400A47939 /* SWRevealViewController.m */,
+				606BE4962206BB2300A47939 /* MyMemory-Bridging-Header.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -131,8 +140,9 @@
 			children = (
 				C3E1601721EE1FDC00086D7B /* LaunchScreen.jpeg */,
 				606BE4902206988C00A47939 /* btnGreen.png */,
-				606BE4912206988C00A47939 /* imgMemo@2x.png */,
+				606BE49A2206BB7500A47939 /* icoMenu.png */,
 				606BE4922206988C00A47939 /* icoWarning@2x.png */,
+				606BE4912206988C00A47939 /* imgMemo@2x.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -172,6 +182,7 @@
 				TargetAttributes = {
 					C331E0F121EDFE23006F59C0 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -199,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C331E10321EDFE25006F59C0 /* LaunchScreen.storyboard in Resources */,
+				606BE49B2206BB7500A47939 /* icoMenu.png in Resources */,
 				606BE4932206988C00A47939 /* btnGreen.png in Resources */,
 				C3E1601821EE1FDC00086D7B /* LaunchScreen.jpeg in Resources */,
 				C331E10021EDFE25006F59C0 /* Assets.xcassets in Resources */,
@@ -293,6 +305,7 @@
 				C314A02421EE0A5C006946DF /* MemoData.swift in Sources */,
 				C314A02221EE0A35006946DF /* ListCell.swift in Sources */,
 				C331E0FE21EDFE23006F59C0 /* MyMemory.xcdatamodeld in Sources */,
+				606BE4992206BB2400A47939 /* SWRevealViewController.m in Sources */,
 				C331E0F621EDFE23006F59C0 /* AppDelegate.swift in Sources */,
 				C3E1601521EE0C6800086D7B /* MemoVC.swift in Sources */,
 			);
@@ -441,6 +454,7 @@
 			baseConfigurationReference = 8ED8DEB9BD0E96EE26A2962D /* Pods-MyMemory.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
@@ -453,6 +467,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hkim.memoit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Memo IT/Classes/MyMemory-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -463,6 +479,7 @@
 			baseConfigurationReference = B40D7847B635B033FB5FBEC6 /* Pods-MyMemory.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
@@ -475,6 +492,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hkim.memoit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Memo IT/Classes/MyMemory-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

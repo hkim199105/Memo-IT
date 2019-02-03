@@ -11,8 +11,16 @@ import UIKit
 class ListVC: UITableViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    @IBOutlet var btnMenu: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let revealVC = self.revealViewController() {
+            self.btnMenu.target = revealVC
+            self.btnMenu.action = #selector(revealVC.revealToggle(_:))
+            self.view.addGestureRecognizer(revealVC.panGestureRecognizer())
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

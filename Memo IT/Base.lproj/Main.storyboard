@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jqi-Rn-egG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uPC-fu-0L4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,7 +22,7 @@
                             <rect key="frame" x="0.0" y="188" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fX5-T6-zoQ" customClass="HKLogButton" customModule="MyMemory" customModuleProvider="target">
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fX5-T6-zoQ" customClass="HKLogButton" customModule="MyMemory" customModuleProvider="target">
                                     <rect key="frame" x="144" y="8" width="77" height="30"/>
                                     <state key="normal" title="Show More"/>
                                 </button>
@@ -154,11 +154,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="List IT!" id="dki-Q5-PSw">
-                        <barButtonItem key="leftBarButtonItem" title="Sign In" id="Z0e-r3-2sp">
-                            <connections>
-                                <segue destination="Uf6-wu-x5x" kind="show" id="kws-rs-QOG"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="icoMenu.png" style="plain" id="Z0e-r3-2sp"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="an6-eH-WR4">
                             <connections>
                                 <segue destination="HSP-MY-pVK" kind="show" identifier="memoSeg" id="ZA2-xC-1h1"/>
@@ -166,6 +162,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnMenu" destination="Z0e-r3-2sp" id="4zH-II-oyQ"/>
                         <segue destination="OkQ-Hw-1tI" kind="show" identifier="readSeg" id="rc7-3Z-Uqk"/>
                     </connections>
                 </tableViewController>
@@ -182,7 +179,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lp2-hW-soe" customClass="GIDSignInButton">
-                                <rect key="frame" x="8" y="72" width="359" height="40"/>
+                                <rect key="frame" x="8" y="28" width="359" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="me3-NF-m6G"/>
@@ -203,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s7j-uZ-nNd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="793" y="-715"/>
+            <point key="canvasLocation" x="927" y="-755"/>
         </scene>
         <!--Memo IT-->
         <scene sceneID="yQm-WD-27q">
@@ -339,5 +336,55 @@
             </objects>
             <point key="canvasLocation" x="-72.463768115942031" y="22.767857142857142"/>
         </scene>
+        <!--Reveal View Controller-->
+        <scene sceneID="at5-fz-jCn">
+            <objects>
+                <viewController id="uPC-fu-0L4" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="amE-Xa-GE4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="9DW-is-Faf"/>
+                    </view>
+                    <connections>
+                        <segue destination="uxv-Ns-n2P" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="yeZ-zC-GLe"/>
+                        <segue destination="jqi-Rn-egG" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="zgm-dP-kSp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cbN-2f-neV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1247" y="259"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="X4H-Vo-PL3">
+            <objects>
+                <tableViewController id="uxv-Ns-n2P" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="KUa-GK-1Rh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="QGv-cv-LKH">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QGv-cv-LKH" id="g48-Ds-huh">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="uxv-Ns-n2P" id="ixS-PE-9PQ"/>
+                            <outlet property="delegate" destination="uxv-Ns-n2P" id="Q1e-3d-ySR"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aKq-vM-gqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-73" y="741"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="icoMenu.png" width="30" height="30"/>
+    </resources>
 </document>
