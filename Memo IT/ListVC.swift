@@ -10,17 +10,22 @@ import UIKit
 
 class ListVC: UITableViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var delegate: HKRevealViewController?
     
     @IBOutlet var btnMenu: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // replace external library with self-made library
+//        if let revealVC = self.revealViewController() {
+//            self.btnMenu.target = revealVC
+//            self.btnMenu.action = #selector(revealVC.revealToggle(_:))
+//            self.view.addGestureRecognizer(revealVC.panGestureRecognizer())
+//        }
         
-        if let revealVC = self.revealViewController() {
-            self.btnMenu.target = revealVC
-            self.btnMenu.action = #selector(revealVC.revealToggle(_:))
-            self.view.addGestureRecognizer(revealVC.panGestureRecognizer())
-        }
+        let btnMenu = UIBarButtonItem(image: UIImage(named: "icoMenu"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(openMenu(_:)))
+        self.navigationItem.leftBarButtonItem = btnMenu
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,6 +69,14 @@ class ListVC: UITableViewController {
         
         vc.param = mRow
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func openMenu(_ sender:Any) {
+        if self.delegate?.isMenuShowing == false {
+            self.delegate?.openSideBar(nil)
+        } else {
+            self.delegate?.closeSideBar(nil)
+        }
     }
 
     /*

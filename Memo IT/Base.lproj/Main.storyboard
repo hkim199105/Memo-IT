@@ -154,7 +154,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="List IT!" id="dki-Q5-PSw">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="icoMenu.png" style="plain" id="Z0e-r3-2sp"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="an6-eH-WR4">
                             <connections>
                                 <segue destination="HSP-MY-pVK" kind="show" identifier="memoSeg" id="ZA2-xC-1h1"/>
@@ -162,7 +161,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="btnMenu" destination="Z0e-r3-2sp" id="4zH-II-oyQ"/>
                         <segue destination="OkQ-Hw-1tI" kind="show" identifier="readSeg" id="rc7-3Z-Uqk"/>
                     </connections>
                 </tableViewController>
@@ -321,7 +319,7 @@
         <!--Navigation Controller-->
         <scene sceneID="sq5-cT-NNZ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jqi-Rn-egG" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="sw_front" automaticallyAdjustsScrollViewInsets="NO" id="jqi-Rn-egG" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uWG-ZF-gc1">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -339,7 +337,7 @@
         <!--Reveal View Controller-->
         <scene sceneID="at5-fz-jCn">
             <objects>
-                <viewController id="uPC-fu-0L4" customClass="SWRevealViewController" sceneMemberID="viewController">
+                <viewController id="uPC-fu-0L4" customClass="HKRevealViewController" customModule="MyMemory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="amE-Xa-GE4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -355,16 +353,16 @@
             </objects>
             <point key="canvasLocation" x="-1247" y="259"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Side MenuVC-->
         <scene sceneID="X4H-Vo-PL3">
             <objects>
-                <tableViewController id="uxv-Ns-n2P" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="sw_rear" id="uxv-Ns-n2P" customClass="SideMenuVC" customModule="MyMemory" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="KUa-GK-1Rh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="QGv-cv-LKH">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellMenu" id="QGv-cv-LKH">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QGv-cv-LKH" id="g48-Ds-huh">
@@ -384,7 +382,4 @@
             <point key="canvasLocation" x="-73" y="741"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="icoMenu.png" width="30" height="30"/>
-    </resources>
 </document>

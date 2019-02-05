@@ -13,6 +13,13 @@
 		606BE4952206988C00A47939 /* icoWarning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 606BE4922206988C00A47939 /* icoWarning@2x.png */; };
 		606BE4992206BB2400A47939 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 606BE4972206BB2400A47939 /* SWRevealViewController.m */; };
 		606BE49B2206BB7500A47939 /* icoMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 606BE49A2206BB7500A47939 /* icoMenu.png */; };
+		6070AC3A2206CFD8004AD0A2 /* HKRevealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070AC392206CFD8004AD0A2 /* HKRevealViewController.swift */; };
+		6070AC3C2206D1B8004AD0A2 /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070AC3B2206D1B8004AD0A2 /* SideMenuVC.swift */; };
+		6070AC422206D20B004AD0A2 /* icoMenu05.png in Resources */ = {isa = PBXBuildFile; fileRef = 6070AC3D2206D20A004AD0A2 /* icoMenu05.png */; };
+		6070AC432206D20B004AD0A2 /* icoMenu01.png in Resources */ = {isa = PBXBuildFile; fileRef = 6070AC3E2206D20A004AD0A2 /* icoMenu01.png */; };
+		6070AC442206D20B004AD0A2 /* icoMenu02.png in Resources */ = {isa = PBXBuildFile; fileRef = 6070AC3F2206D20A004AD0A2 /* icoMenu02.png */; };
+		6070AC452206D20B004AD0A2 /* icoMenu03.png in Resources */ = {isa = PBXBuildFile; fileRef = 6070AC402206D20A004AD0A2 /* icoMenu03.png */; };
+		6070AC462206D20B004AD0A2 /* icoMenu04.png in Resources */ = {isa = PBXBuildFile; fileRef = 6070AC412206D20B004AD0A2 /* icoMenu04.png */; };
 		7763BB3321FC791E00B37E1D /* SignVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7763BB3221FC791E00B37E1D /* SignVC.swift */; };
 		C314A01C21EE09AB006946DF /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C314A01B21EE09AB006946DF /* ListVC.swift */; };
 		C314A02221EE0A35006946DF /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C314A02121EE0A35006946DF /* ListCell.swift */; };
@@ -37,6 +44,13 @@
 		606BE4972206BB2400A47939 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		606BE4982206BB2400A47939 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		606BE49A2206BB7500A47939 /* icoMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icoMenu.png; sourceTree = "<group>"; };
+		6070AC392206CFD8004AD0A2 /* HKRevealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKRevealViewController.swift; sourceTree = "<group>"; };
+		6070AC3B2206D1B8004AD0A2 /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
+		6070AC3D2206D20A004AD0A2 /* icoMenu05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icoMenu05.png; sourceTree = "<group>"; };
+		6070AC3E2206D20A004AD0A2 /* icoMenu01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icoMenu01.png; sourceTree = "<group>"; };
+		6070AC3F2206D20A004AD0A2 /* icoMenu02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icoMenu02.png; sourceTree = "<group>"; };
+		6070AC402206D20A004AD0A2 /* icoMenu03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icoMenu03.png; sourceTree = "<group>"; };
+		6070AC412206D20B004AD0A2 /* icoMenu04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icoMenu04.png; sourceTree = "<group>"; };
 		7763BB3221FC791E00B37E1D /* SignVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignVC.swift; sourceTree = "<group>"; };
 		8ED8DEB9BD0E96EE26A2962D /* Pods-MyMemory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMemory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyMemory/Pods-MyMemory.debug.xcconfig"; sourceTree = "<group>"; };
 		988D18F5AB67231F044C3429 /* Pods_MyMemory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyMemory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +88,7 @@
 				606BE48E2206981700A47939 /* HKLogButton.swift */,
 				606BE4982206BB2400A47939 /* SWRevealViewController.h */,
 				606BE4972206BB2400A47939 /* SWRevealViewController.m */,
+				6070AC392206CFD8004AD0A2 /* HKRevealViewController.swift */,
 				606BE4962206BB2300A47939 /* MyMemory-Bridging-Header.h */,
 			);
 			path = Classes;
@@ -126,6 +141,7 @@
 				C331E10421EDFE25006F59C0 /* Info.plist */,
 				C331E0FC21EDFE23006F59C0 /* MyMemory.xcdatamodeld */,
 				C314A02321EE0A5C006946DF /* MemoData.swift */,
+				6070AC3B2206D1B8004AD0A2 /* SideMenuVC.swift */,
 				C314A01B21EE09AB006946DF /* ListVC.swift */,
 				C314A02121EE0A35006946DF /* ListCell.swift */,
 				7763BB3221FC791E00B37E1D /* SignVC.swift */,
@@ -141,6 +157,11 @@
 				C3E1601721EE1FDC00086D7B /* LaunchScreen.jpeg */,
 				606BE4902206988C00A47939 /* btnGreen.png */,
 				606BE49A2206BB7500A47939 /* icoMenu.png */,
+				6070AC3E2206D20A004AD0A2 /* icoMenu01.png */,
+				6070AC3F2206D20A004AD0A2 /* icoMenu02.png */,
+				6070AC402206D20A004AD0A2 /* icoMenu03.png */,
+				6070AC412206D20B004AD0A2 /* icoMenu04.png */,
+				6070AC3D2206D20A004AD0A2 /* icoMenu05.png */,
 				606BE4922206988C00A47939 /* icoWarning@2x.png */,
 				606BE4912206988C00A47939 /* imgMemo@2x.png */,
 			);
@@ -210,13 +231,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				C331E10321EDFE25006F59C0 /* LaunchScreen.storyboard in Resources */,
+				6070AC462206D20B004AD0A2 /* icoMenu04.png in Resources */,
+				6070AC422206D20B004AD0A2 /* icoMenu05.png in Resources */,
 				606BE49B2206BB7500A47939 /* icoMenu.png in Resources */,
 				606BE4932206988C00A47939 /* btnGreen.png in Resources */,
 				C3E1601821EE1FDC00086D7B /* LaunchScreen.jpeg in Resources */,
 				C331E10021EDFE25006F59C0 /* Assets.xcassets in Resources */,
 				606BE4942206988C00A47939 /* imgMemo@2x.png in Resources */,
+				6070AC442206D20B004AD0A2 /* icoMenu02.png in Resources */,
 				C331E0FB21EDFE23006F59C0 /* Main.storyboard in Resources */,
+				6070AC452206D20B004AD0A2 /* icoMenu03.png in Resources */,
 				606BE4952206988C00A47939 /* icoWarning@2x.png in Resources */,
+				6070AC432206D20B004AD0A2 /* icoMenu01.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,7 +326,9 @@
 			files = (
 				606BE48F2206981700A47939 /* HKLogButton.swift in Sources */,
 				C3E1601321EE0C5D00086D7B /* ReadVC.swift in Sources */,
+				6070AC3C2206D1B8004AD0A2 /* SideMenuVC.swift in Sources */,
 				7763BB3321FC791E00B37E1D /* SignVC.swift in Sources */,
+				6070AC3A2206CFD8004AD0A2 /* HKRevealViewController.swift in Sources */,
 				C314A01C21EE09AB006946DF /* ListVC.swift in Sources */,
 				C314A02421EE0A5C006946DF /* MemoData.swift in Sources */,
 				C314A02221EE0A35006946DF /* ListCell.swift in Sources */,
