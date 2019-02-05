@@ -12,7 +12,7 @@ class ListVC: UITableViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var delegate: HKRevealViewController?
     
-    @IBOutlet var btnMenu: UIBarButtonItem!
+//    @IBOutlet var btnMenu: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -13,7 +13,7 @@
         <!--List IT!-->
         <scene sceneID="b46-Rn-LA6">
             <objects>
-                <tableViewController id="0kS-Lh-aN8" customClass="ListVC" customModule="MyMemory" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ListVC" id="0kS-Lh-aN8" customClass="ListVC" customModule="MyMemory" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zO8-jX-Roq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -203,7 +203,7 @@
         <!--Memo IT-->
         <scene sceneID="yQm-WD-27q">
             <objects>
-                <viewController id="HSP-MY-pVK" customClass="MemoVC" customModule="MyMemory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemoVC" id="HSP-MY-pVK" customClass="MemoVC" customModule="MyMemory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bq2-Aq-cTY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -315,6 +315,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NLV-bK-kcV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1648" y="359"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="YHa-nm-rc1">
+            <objects>
+                <navigationController storyboardIdentifier="_ProfileVC" hidesBarsOnTap="YES" hidesBarsWhenKeyboardAppears="YES" hidesBarsWhenVerticallyCompact="YES" id="83z-P2-213" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xme-zN-Zw4">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Fdt-sC-5OH" kind="relationship" relationship="rootViewController" id="NWK-rn-wJg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wZA-4w-N3f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1007" y="1060"/>
+        </scene>
+        <!--ProfileVC-->
+        <scene sceneID="NhK-T3-l0Q">
+            <objects>
+                <viewController id="Fdt-sC-5OH" customClass="ProfileVC" customModule="MyMemory" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9nq-lA-QjE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="MBk-mC-8MS"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Qbs-7E-1RK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q86-Aq-1qp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1670" y="1059"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sq5-cT-NNZ">
