@@ -26,6 +26,14 @@ class ListVC: UITableViewController {
         
         let btnMenu = UIBarButtonItem(image: UIImage(named: "icoMenu"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(openMenu(_:)))
         self.navigationItem.leftBarButtonItem = btnMenu
+        
+        let dragLeft = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(openMenu(_:)))
+        dragLeft.edges = UIRectEdge.left
+        self.view.addGestureRecognizer(dragLeft)
+        
+        let dragRight = UISwipeGestureRecognizer(target: self, action: #selector(openMenu(_:)))
+        dragRight.direction = .left
+        self.view.addGestureRecognizer(dragRight)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -72,7 +80,11 @@ class ListVC: UITableViewController {
     }
     
     @objc func openMenu(_ sender:Any) {
-        if self.delegate?.isMenuShowing == false {
+        if sender is UIScreenEdgePanGestureRecognizer {
+            self.delegate?.openSideBar(nil)
+        } else if sender is UISwipeGestureRecognizer {
+            self.delegate?.closeSideBar(nil)
+        } else if self.delegate?.isMenuShowing == false {
             self.delegate?.openSideBar(nil)
         } else {
             self.delegate?.closeSideBar(nil)
