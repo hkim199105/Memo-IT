@@ -16,6 +16,7 @@
 		6010B635220942AD0085407B /* icoGraph.png in Resources */ = {isa = PBXBuildFile; fileRef = 6010B62D220942AD0085407B /* icoGraph.png */; };
 		6010B636220942AD0085407B /* imgProfile.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6010B62E220942AD0085407B /* imgProfile.jpg */; };
 		6010B638220954C60085407B /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6010B637220954C60085407B /* ProfileVC.swift */; };
+		6010B63A22095E910085407B /* User.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6010B63922095E910085407B /* User.plist */; };
 		606BE48F2206981700A47939 /* HKLogButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606BE48E2206981700A47939 /* HKLogButton.swift */; };
 		606BE4932206988C00A47939 /* btnGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 606BE4902206988C00A47939 /* btnGreen.png */; };
 		606BE4942206988C00A47939 /* imgMemo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 606BE4912206988C00A47939 /* imgMemo@2x.png */; };
@@ -54,6 +55,7 @@
 		6010B62D220942AD0085407B /* icoGraph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icoGraph.png; sourceTree = "<group>"; };
 		6010B62E220942AD0085407B /* imgProfile.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = imgProfile.jpg; sourceTree = "<group>"; };
 		6010B637220954C60085407B /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		6010B63922095E910085407B /* User.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = User.plist; sourceTree = "<group>"; };
 		606BE48E2206981700A47939 /* HKLogButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKLogButton.swift; sourceTree = "<group>"; };
 		606BE4902206988C00A47939 /* btnGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnGreen.png; sourceTree = "<group>"; };
 		606BE4912206988C00A47939 /* imgMemo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imgMemo@2x.png"; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				C331E0FF21EDFE25006F59C0 /* Assets.xcassets */,
 				C331E10121EDFE25006F59C0 /* LaunchScreen.storyboard */,
 				C331E10421EDFE25006F59C0 /* Info.plist */,
+				6010B63922095E910085407B /* User.plist */,
 				C331E0FC21EDFE23006F59C0 /* MyMemory.xcdatamodeld */,
 				C314A02321EE0A5C006946DF /* MemoData.swift */,
 				6070AC3B2206D1B8004AD0A2 /* SideMenuVC.swift */,
@@ -276,6 +279,7 @@
 				6010B631220942AD0085407B /* icoBento.png in Resources */,
 				606BE4952206988C00A47939 /* icoWarning@2x.png in Resources */,
 				6070AC432206D20B004AD0A2 /* icoMenu01.png in Resources */,
+				6010B63A22095E910085407B /* User.plist in Resources */,
 				6010B630220942AD0085407B /* icoMemo.png in Resources */,
 				6010B635220942AD0085407B /* icoGraph.png in Resources */,
 			);
