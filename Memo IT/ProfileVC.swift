@@ -14,6 +14,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     let tv = UITableView()
     
     // elements in tv
+    let tfName = UITextField()
     let tfAccount = UITextField()
     let pickerAccount = UIPickerView()
     let segGender = UISegmentedControl()
@@ -51,11 +52,10 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         self.tv.dataSource = self
         self.view.addSubview(tv)
         
-        // set UITextField of account
         self.tfAccount.delegate = self
-        
-        self.pickerAccount.delegate = self
         self.tfAccount.inputView = pickerAccount
+        self.pickerAccount.delegate = self
+        self.tfName.isEnabled = false
         
         let toolbarAccount = UIToolbar()
         toolbarAccount.frame = CGRect(x: 0, y: 0, width: 0, height: 35)     //x, y, width is rendered when shown up, so do not care now.
@@ -72,6 +72,27 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         btnSelectAccount.target = self
         btnSelectAccount.action = #selector(selectAccount)
         toolbarAccount.setItems([btnNewAccount, flexSpace, btnSelectAccount], animated: true)
+        
+        let plist = UserDefaults.standard
+        self.accountsSaved = plist.array(forKey: "accountsSaved") as? [String] ?? [String]()
+        if let mAccount = plist.string(forKey: "accountSelected") {
+            self.tfAccount.text = mAccount
+            
+            let customPlist = "\(mAccount).plist"
+            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+            let path = paths[0] as NSString
+            let clist = path.strings(byAppendingPaths: [customPlist]).first!
+            let data = NSDictionary(contentsOfFile: clist)
+            
+            self.tfName.text = data?["name"] as? String
+            self.segGender.selectedSegmentIndex = data?["gender"] as? Int ?? 0
+            self.switchMartial.isOn = data?["married"] as? Bool ?? false
+
+        } else {
+            self.tfAccount.placeholder = "No Signed Account"
+            self.segGender.isEnabled = false
+            self.switchMartial.isEnabled = false
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -91,19 +112,19 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
-        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 13)
-//        cell.accessoryType = .disclosureIndicator
-        
         let cellDefault = UITableViewCell(style: .default, reuseIdentifier: "cellDefault")
         cellDefault.textLabel?.font = UIFont.systemFont(ofSize: 14)
         
         switch indexPath.row {
         case 0:
-            cell.textLabel?.text = "Name"
+            cellDefault.textLabel?.text = "Name"
             
-            return cell
+            let tfWidth:CGFloat = CGFloat(200)
+            tfName.frame = CGRect(x: self.view.frame.width - tfWidth - 8, y: 8, width: tfWidth, height: cellDefault.contentView.bounds.height - 16)
+            tfName.borderStyle = .none
+            tfName.textAlignment = .right
+            cellDefault.addSubview(tfName)
+            
         case 1:
             cellDefault.textLabel?.text = "Email"
             
@@ -113,7 +134,6 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             tfAccount.textAlignment = .right
             cellDefault.addSubview(tfAccount)
             
-            return cellDefault
         case 2:
             cellDefault.textLabel?.text = "Gender"
             
@@ -130,8 +150,6 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             segGender.addTarget(self, action: #selector(changeGender(_:)), for: .valueChanged)
             cellDefault.addSubview(segGender)
             
-            return cellDefault
-            
         case 3:
             cellDefault.textLabel?.text = "Martial Status"
             
@@ -140,32 +158,43 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             switchMartial.addTarget(self, action: #selector(changeMartial(_:)), for: .valueChanged)
             cellDefault.addSubview(switchMartial)
             
-            return cellDefault
-            
         default:
             ()
         }
         
-        return cell
+        return cellDefault
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (self.tfAccount.text?.isEmpty)! {
+            return
+        }
+        
         switch indexPath.row {
         case 0:
             let alert = UIAlertController(title: nil, message: "Your name, please.", preferredStyle: .alert)
             alert.addTextField() {
-                if let tmpName = tableView.cellForRow(at: indexPath)?.detailTextLabel?.text {
+                if let tmpName = self.tfName.text {
                     $0.text = tmpName
                 }
             }
             alert.addAction(UIAlertAction(title: "OK", style: .default) { (_) in
                 let value = alert.textFields?[0].text
-                let plist = UserDefaults.standard
-                plist.set(value, forKey: "name")
-                plist.synchronize()
-                if let labelName = tableView.cellForRow(at: indexPath)?.detailTextLabel {
-                    labelName.text = value
-                }
+                
+                // replace UserDefaults to CustomPlist
+//                let plist = UserDefaults.standard
+//                plist.set(value, forKey: "name")
+//                plist.synchronize()
+                
+                let customPlist = "\(self.tfAccount.text!).plist"
+                let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+                let path = paths[0] as NSString
+                let plist = path.strings(byAppendingPaths: [customPlist]).first!
+                let data = NSMutableDictionary(contentsOfFile: plist) ?? NSMutableDictionary()
+                data.setValue(value, forKey: "name")
+                data.write(toFile: plist, atomically: true)
+                
+                self.tfName.text = value
             })
             self.present(alert, animated: true, completion: nil)
             
@@ -190,6 +219,21 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let accountSelected = self.accountsSaved[row]
+        
+        let plist = UserDefaults.standard
+        plist.set(accountSelected, forKey:"accountSelected")
+        plist.synchronize()
+        
+        let customPlist = "\(accountSelected).plist"
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let path = paths[0] as NSString
+        let clist = path.strings(byAppendingPaths: [customPlist]).first!
+        let data = NSDictionary(contentsOfFile: clist)
+        
+        self.tfName.text = data?["name"] as? String
+        self.segGender.selectedSegmentIndex = data?["gender"] as? Int ?? 0
+        self.switchMartial.isOn = data?["married"] as? Bool ?? false
+        
         self.tfAccount.text = accountSelected
     }
     
@@ -209,16 +253,35 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     
     @objc func changeGender(_ sender: UISegmentedControl) {
         let value = sender.selectedSegmentIndex
-        let plist = UserDefaults.standard
-        plist.set(value, forKey: "gender")
-        plist.synchronize()
+        
+        // replace UserDefaults to CustomPlist
+//        let plist = UserDefaults.standard
+//        plist.set(value, forKey: "gender")
+//        plist.synchronize()
+        
+        let customPlist = "\(self.tfAccount.text!).plist"
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let path = paths[0] as NSString
+        let plist = path.strings(byAppendingPaths: [customPlist]).first!
+        let data = NSMutableDictionary(contentsOfFile: plist) ?? NSMutableDictionary()
+        data.setValue(value, forKey: "gender")
+        data.write(toFile: plist, atomically: true)
     }
     
     @objc func changeMartial(_ sender: UISwitch) {
         let value = sender.isOn
-        let plist = UserDefaults.standard
-        plist.set(value, forKey: "martial")
-        plist.synchronize()
+        
+        // replace UserDefaults to CustomPlist
+//        let plist = UserDefaults.standard
+//        plist.set(value, forKey: "martial")
+//        plist.synchronize()
+        let customPlist = "\(self.tfAccount.text!).plist"
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let path = paths[0] as NSString
+        let plist = path.strings(byAppendingPaths: [customPlist]).first!
+        let data = NSMutableDictionary(contentsOfFile: plist) ?? NSMutableDictionary()
+        data.setValue(value, forKey: "martial")
+        data.write(toFile: plist, atomically: true)
     }
     
     @objc func selectAccount(_ sender: UIBarButtonItem) {
@@ -241,7 +304,15 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
                     
                 } else {
                     self.accountsSaved.append(mAccount)
+                    
+                    let plist = UserDefaults.standard
+                    plist.set(self.accountsSaved, forKey: "accountsSaved")
+                    plist.set(mAccount, forKey:"accountSelected")
+                    plist.synchronize()
+                    
                     self.tfAccount.text = mAccount
+                    self.segGender.isEnabled = true
+                    self.switchMartial.isEnabled = true
                 }
             }
         })
