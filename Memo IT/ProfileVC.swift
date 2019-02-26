@@ -19,9 +19,12 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     let pickerAccount = UIPickerView()
     let segGender = UISegmentedControl()
     let switchMartial = UISwitch()
+    let defaultMartial = false
+    let defaultGender = 0   //0: male, 1:neutral, 2:female
     
     // data
     var accountsSaved = [String]()
+    var defaultPList : NSDictionary!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,13 +88,17 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             let data = NSDictionary(contentsOfFile: clist)
             
             self.tfName.text = data?["name"] as? String
-            self.segGender.selectedSegmentIndex = data?["gender"] as? Int ?? 0
-            self.switchMartial.isOn = data?["married"] as? Bool ?? false
+            self.segGender.selectedSegmentIndex = data?["gender"] as? Int ?? self.defaultGender
+            self.switchMartial.isOn = data?["married"] as? Bool ?? self.defaultMartial
 
         } else {
             self.tfAccount.placeholder = "No Signed Account"
             self.segGender.isEnabled = false
             self.switchMartial.isEnabled = false
+        }
+        
+        if let defaultPListPath = Bundle.main.path(forResource: "UserTemplate", ofType: "plist") {
+            self.defaultPList = NSDictionary(contentsOfFile: defaultPListPath)
         }
     }
     
@@ -190,7 +197,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
                 let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
                 let path = paths[0] as NSString
                 let plist = path.strings(byAppendingPaths: [customPlist]).first!
-                let data = NSMutableDictionary(contentsOfFile: plist) ?? NSMutableDictionary()
+                let data = NSMutableDictionary(contentsOfFile: plist) ?? NSMutableDictionary(dictionary: self.defaultPList)
                 data.setValue(value, forKey: "name")
                 data.write(toFile: plist, atomically: true)
                 
@@ -231,8 +238,8 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         let data = NSDictionary(contentsOfFile: clist)
         
         self.tfName.text = data?["name"] as? String
-        self.segGender.selectedSegmentIndex = data?["gender"] as? Int ?? 0
-        self.switchMartial.isOn = data?["married"] as? Bool ?? false
+        self.segGender.selectedSegmentIndex = data?["gender"] as? Int ?? self.defaultGender
+        self.switchMartial.isOn = data?["martial"] as? Bool ?? self.defaultMartial
         
         self.tfAccount.text = accountSelected
     }
@@ -263,7 +270,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let path = paths[0] as NSString
         let plist = path.strings(byAppendingPaths: [customPlist]).first!
-        let data = NSMutableDictionary(contentsOfFile: plist) ?? NSMutableDictionary()
+        let data = NSMutableDictionary(contentsOfFile: plist) ?? NSMutableDictionary(dictionary: self.defaultPList)
         data.setValue(value, forKey: "gender")
         data.write(toFile: plist, atomically: true)
     }
@@ -279,7 +286,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let path = paths[0] as NSString
         let plist = path.strings(byAppendingPaths: [customPlist]).first!
-        let data = NSMutableDictionary(contentsOfFile: plist) ?? NSMutableDictionary()
+        let data = NSMutableDictionary(contentsOfFile: plist) ?? NSMutableDictionary(dictionary: self.defaultPList)
         data.setValue(value, forKey: "martial")
         data.write(toFile: plist, atomically: true)
     }
@@ -311,8 +318,11 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
                     plist.synchronize()
                     
                     self.tfAccount.text = mAccount
+                    self.tfName.text = ""
                     self.segGender.isEnabled = true
+                    self.segGender.selectedSegmentIndex = self.defaultGender
                     self.switchMartial.isEnabled = true
+                    self.switchMartial.isOn = self.defaultMartial
                 }
             }
         })
