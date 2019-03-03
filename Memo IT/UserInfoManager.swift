@@ -9,20 +9,20 @@
 import Foundation
 
 struct UserInfoKey {
-    static let loginId = "LOGINID"
+    static let signedId = "SIGNEDID"
     static let account = "ACCOUNT"
     static let name = "NAME"
     static let profile = "PROFILE"
 }
 
 class UserInfoManager {
-    var loginid: Int {
+    var signedId: Int {
         get {
-            return UserDefaults.standard.integer(forKey: UserInfoKey.loginId)
+            return UserDefaults.standard.integer(forKey: UserInfoKey.signedId)
         }
         set(v) {
             let ud = UserDefaults.standard
-            ud.set(v, forKey: UserInfoKey.loginId)
+            ud.set(v, forKey: UserInfoKey.signedId)
             ud.synchronize()
         }
     }
@@ -55,32 +55,32 @@ class UserInfoManager {
             if let _profile = ud.data(forKey: UserInfoKey.profile) {
                 return UIImage(data: _profile)
             } else {
-                return UIImage(named: "account.jpg")
+                return UIImage(named: "imgProfile.jpg")
             }
         }
         set(v) {
             if v != nil {
                 let ud = UserDefaults.standard
-                ud.set(UIImage.pngData( v! ), forKey: UserInfoKey.profile)
+                ud.set(v?.pngData(), forKey: UserInfoKey.profile)
                 ud.synchronize()
             }
         }
     }
     
-    var isLogin: Bool {
-        if self.loginid == 0 || self.account == nil {
+    var isSigned: Bool {
+        if self.signedId == 0 || self.account == nil {
             return false
         } else {
             return true
         }
     }
     
-    func login(account: String, passwd: String) -> Bool {
+    func signIn(account: String, passwd: String) -> Bool {
         if account == "hkim199105@gmail.com" && passwd == "1234" {
             let ud = UserDefaults.standard
-            ud.set(100, forKey: UserInfoKey.loginId)
+            ud.set(100, forKey: UserInfoKey.signedId)
             ud.set(account, forKey: UserInfoKey.account)
-            ud.set("학영", forKey: UserInfoKey.name)
+            ud.set("hkim", forKey: UserInfoKey.name)
             ud.synchronize()
             return true
         } else {
@@ -88,14 +88,13 @@ class UserInfoManager {
         }
     }
     
-    func logout() -> Bool {
+    func signOut() -> Bool {
         let ud = UserDefaults.standard
-        ud.removeObject(forKey: UserInfoKey.account)
         ud.removeObject(forKey: UserInfoKey.name)
         ud.removeObject(forKey: UserInfoKey.account)
         ud.removeObject(forKey: UserInfoKey.profile)
         ud.synchronize()
         
         return true
-    }
+    }           
 }

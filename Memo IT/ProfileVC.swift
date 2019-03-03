@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     let imgProfile = UIImageView()
     let tv = UITableView()
@@ -26,9 +26,12 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     var accountsSaved = [String]()
     var defaultPList : NSDictionary!
     
+    let mUserInfoManager = UserInfoManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // draw UI
         let btnBack = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(close(_:)))
         self.navigationItem.leftBarButtonItem = btnBack
         self.navigationItem.title = "My Account"
@@ -42,7 +45,8 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         imgBg.layer.masksToBounds = true
         self.view.addSubview(imgBg)
         
-        self.imgProfile.image = UIImage(named: "imgProfile.jpg")
+//        self.imgProfile.image = UIImage(named: "imgProfile.jpg")
+        self.imgProfile.image = self.mUserInfoManager.profile
         self.imgProfile.frame.size = CGSize(width: 100, height: 100)
         self.imgProfile.center = CGPoint(x: self.view.frame.width / 2, y: 270)
         self.imgProfile.layer.cornerRadius = self.imgProfile.frame.width / 2
@@ -50,7 +54,11 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         self.imgProfile.layer.masksToBounds = true
         self.view.addSubview(self.imgProfile)
         
-        self.tv.frame = CGRect(x: 0, y: self.imgProfile.frame.origin.y + self.imgProfile.frame.height + 20, width: self.view.frame.width, height: 500)
+        let tabProfile = UITapGestureRecognizer(target: self, action: #selector(profile(_:)))
+        self.imgProfile.addGestureRecognizer(tabProfile)
+        self.imgProfile.isUserInteractionEnabled = true
+        
+        self.tv.frame = CGRect(x: 0, y: self.imgProfile.frame.origin.y + self.imgProfile.frame.height + 20, width: self.view.frame.width, height: 200)
         self.tv.delegate = self
         self.tv.dataSource = self
         self.view.addSubview(tv)
@@ -76,6 +84,9 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         btnSelectAccount.action = #selector(selectAccount)
         toolbarAccount.setItems([btnNewAccount, flexSpace, btnSelectAccount], animated: true)
         
+        self.drawBtnSign()
+        
+        // set UserDefaults
         let plist = UserDefaults.standard
         self.accountsSaved = plist.array(forKey: "accountsSaved") as? [String] ?? [String]()
         if let mAccount = plist.string(forKey: "accountSelected") {
@@ -130,6 +141,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             tfName.frame = CGRect(x: self.view.frame.width - tfWidth - 8, y: 8, width: tfWidth, height: cellDefault.contentView.bounds.height - 16)
             tfName.borderStyle = .none
             tfName.textAlignment = .right
+            tfName.text = self.mUserInfoManager.name ?? "Sign In, Please."
             cellDefault.addSubview(tfName)
             
         case 1:
@@ -139,6 +151,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             tfAccount.frame = CGRect(x: self.view.frame.width - tfWidth - 8, y: 8, width: tfWidth, height: cellDefault.contentView.bounds.height - 16)
             tfAccount.borderStyle = .none
             tfAccount.textAlignment = .right
+            tfAccount.text = self.mUserInfoManager.account ?? "Sign In, Please."
             cellDefault.addSubview(tfAccount)
             
         case 2:
@@ -173,6 +186,10 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if !self.mUserInfoManager.isSigned {
+            self.doSignIn(self.tv)
+        }
+        
         if (self.tfAccount.text?.isEmpty)! {
             return
         }
@@ -253,6 +270,16 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         }
     }
     
+    // MARK: - methods for UIImagePickerControllerDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let img = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            self.mUserInfoManager.profile = img
+            self.imgProfile.image = img
+        }
+        
+        picker.dismiss(animated: true)
+    }
+    
     // MARK: - methods
     @objc func close(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
@@ -328,6 +355,119 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         })
         alertAddAccount.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         self.present(alertAddAccount, animated: true, completion: nil)
+    }
+    
+    func imgProfilePicker(_ source: UIImagePickerController.SourceType) {
+        let picker = UIImagePickerController()
+        picker.sourceType = source
+        picker.delegate = self
+        picker.allowsEditing = true
+        self.present(picker, animated: true)
+    }
+    
+    @objc func profile(_ sender: UIButton) {
+        guard self.mUserInfoManager.account != nil else {
+            self.doSignIn(self)
+            return
+        }
+        
+        let alert = UIAlertController(title: nil, message: "From which device?", preferredStyle: .actionSheet)
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            alert.addAction(UIAlertAction(title: "Camera", style: .default){ (_) in
+                self.imgProfilePicker(.camera)
+            })
+        }
+        
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
+            alert.addAction(UIAlertAction(title: "Album", style: .default){ (_) in
+                self.imgProfilePicker(.savedPhotosAlbum)
+            })
+        }
+        
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            alert.addAction(UIAlertAction(title: "Photo Library", style: .default){ (_) in
+                self.imgProfilePicker(.photoLibrary)
+            })
+        }
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        self.present(alert, animated: true)
+    }
+    
+    // MARK: - Login/Logoutmethods
+    @objc func doSignIn(_ sender: Any) {
+        let alertSignIn = UIAlertController(title: "LOGIN", message: nil, preferredStyle: .alert)
+        
+        alertSignIn.addTextField() { (tf) in
+            tf.placeholder = "Your Account"
+        }
+        alertSignIn.addTextField() { (tf) in
+            tf.placeholder = "Password"
+            tf.isSecureTextEntry = true
+        }
+        alertSignIn.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alertSignIn.addAction(UIAlertAction(title: "Login", style: .destructive) {(_) in
+            let account = alertSignIn.textFields?[0].text ?? ""
+            let passwd = alertSignIn.textFields?[1].text ?? ""
+            
+            if self.mUserInfoManager.signIn(account: account, passwd: passwd) {
+                // Sign-In succeeded
+                self.tv.reloadData()
+                self.imgProfile.image = self.mUserInfoManager.profile
+                self.drawBtnSign()
+                
+            } else {
+                let msg = "Wrong Account or Password.\nPlease check your account."
+                let alertSignInFailed = UIAlertController(title: nil, message: msg, preferredStyle: .alert)
+                alertSignInFailed.addAction(UIAlertAction(title: "OK", style: .cancel))
+                self.present(alertSignInFailed, animated: true)
+            }
+        })
+        
+        self.present(alertSignIn, animated: true)
+    }
+    
+    @objc func doSignOut(_ sender: Any) {
+        let msg = "Sign out?"
+        let alertSignOut = UIAlertController(title: nil, message: msg, preferredStyle: .alert)
+        
+        alertSignOut.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alertSignOut.addAction(UIAlertAction(title: "Sign Out", style: .destructive){(_) in
+            if self.mUserInfoManager.signOut() {
+                self.tv.reloadData()
+                self.imgProfile.image = self.mUserInfoManager.profile
+                self.drawBtnSign()
+            }
+        })
+        
+        self.present(alertSignOut, animated: true)
+    }
+    
+    func drawBtnSign() {
+        let vSign = UIView()
+        vSign.frame.size.width = self.view.frame.width
+        vSign.frame.size.height = 40
+        vSign.frame.origin.x = 0
+        vSign.frame.origin.y = self.tv.frame.origin.y + self.tv.frame.height
+        vSign.backgroundColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1)
+        self.view.addSubview(vSign)
+        
+        let btnSign = UIButton()
+        btnSign.frame.size.width = 100
+        btnSign.frame.size.height = 30
+        btnSign.center.x = vSign.frame.size.width / 2
+        btnSign.center.y = vSign.frame.size.height / 2
+        
+        if self.mUserInfoManager.isSigned {
+            btnSign.setTitle("Sign Out", for: .normal)
+            btnSign.addTarget(self, action: #selector(doSignOut(_:)), for: .touchUpInside)
+        } else {
+            btnSign.setTitle("Sign In", for: .normal)
+            btnSign.addTarget(self, action: #selector(doSignIn(_:)), for: .touchUpInside)
+        }
+        vSign.addSubview(btnSign)
     }
     
     /*
