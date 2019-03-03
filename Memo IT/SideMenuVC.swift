@@ -31,6 +31,8 @@ class SideMenuVC: UITableViewController {
     let lblEmail = UILabel()
     let imgProfile = UIImageView()
     
+    let mUserInfoManager = UserInfoManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,28 +41,34 @@ class SideMenuVC: UITableViewController {
         viewHeader.backgroundColor = UIColor.brown
         self.tableView.tableHeaderView = viewHeader
         
-        self.lblName.text = "hkim"
+//        self.lblName.text = "hkim"
         self.lblName.frame = CGRect(x: 70, y: 15, width: 100, height: 30)
         self.lblName.textColor = UIColor.white
         self.lblName.font = UIFont.boldSystemFont(ofSize: 15)
         self.lblName.backgroundColor = UIColor.clear
-        self.lblName.sizeToFit()
         viewHeader.addSubview(self.lblName)
         
-        self.lblEmail.text = "hkim199105@gmail.com"
+//        self.lblEmail.text = "hkim199105@gmail.com"
         self.lblEmail.frame = CGRect(x: 70, y: 30, width: 100, height: 30)
         self.lblEmail.textColor = UIColor.white
         self.lblEmail.font = UIFont.systemFont(ofSize: 11)
         self.lblEmail.backgroundColor = UIColor.clear
-        self.lblEmail.sizeToFit()
         viewHeader.addSubview(self.lblEmail)
         
-        self.imgProfile.image = UIImage(named: "imgProfile.jpg")
+//        self.imgProfile.image = UIImage(named: "imgProfile.jpg")
         self.imgProfile.frame = CGRect(x: 10, y: 10, width: 50, height: 50)
         self.imgProfile.layer.cornerRadius = self.imgProfile.frame.width / 2
         self.imgProfile.layer.borderWidth = 0
         self.imgProfile.layer.masksToBounds = true
         viewHeader.addSubview(self.imgProfile)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.lblName.text = self.mUserInfoManager.name
+        self.lblName.sizeToFit()
+        self.lblEmail.text = self.mUserInfoManager.account
+        self.lblEmail.sizeToFit()
+        self.imgProfile.image = self.mUserInfoManager.profile
     }
 
     // MARK: - Table view data source
