@@ -21,6 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // initialize Google sign-in
         GIDSignIn.sharedInstance().clientID = "1020613025143-u7kmf46t2cteuhr75tomrjvsslqbeca9.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
+        
+        let pageControl = UIPageControl.appearance()
+        pageControl.pageIndicatorTintColor = UIColor.lightGray
+        pageControl.currentPageIndicatorTintColor = UIColor.black
+        pageControl.backgroundColor = UIColor.white
+        
         return true
     }
 

@@ -74,7 +74,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         self.tfAccount.inputAccessoryView = toolbarAccount
         
         let btnNewAccount = UIBarButtonItem()
-        btnNewAccount.title = "Add"
+        btnNewAccount.title = NSLocalizedString("Add", comment: "")
         btnNewAccount.target = self
         btnNewAccount.action = #selector(addAccount)
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)

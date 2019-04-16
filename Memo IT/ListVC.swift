@@ -40,6 +40,13 @@ class ListVC: UITableViewController {
         self.tableView.reloadData()
     }
     override func viewWillAppear(_ animated: Bool) {
+        let ud = UserDefaults.standard
+        if ud.bool(forKey: UserInfoKey.tutorial) == false {
+            let vc = self.instanceSbTutorial(name: "MasterVC")
+            self.present(vc!, animated: false)
+            return
+        }
+        
         self.tableView.reloadData()
     }
     

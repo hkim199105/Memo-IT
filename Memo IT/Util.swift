@@ -13,6 +13,6 @@ extension UIViewController {
         return UIStoryboard(name: "Tutorial", bundle: Bundle.main)
     }
     func instanceSbTutorial(name: String) -> UIViewController? {
-        return self.sbTutorial.instantiateInitialViewController(withIdentifier: name)
+        return self.sbTutorial.instantiateViewController(withIdentifier: name)
     }
 }

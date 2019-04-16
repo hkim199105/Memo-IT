@@ -10,9 +10,10 @@ import Foundation
 
 struct UserInfoKey {
     static let signedId = "SIGNEDID"
-    static let account = "ACCOUNT"
-    static let name = "NAME"
-    static let profile = "PROFILE"
+    static let account  = "ACCOUNT"
+    static let name     = "NAME"
+    static let profile  = "PROFILE"
+    static let tutorial = "TUTORIAL"
 }
 
 class UserInfoManager {

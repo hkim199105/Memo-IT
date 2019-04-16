@@ -14,10 +14,30 @@ class TutorialMasterVC: UIViewController, UIPageViewControllerDataSource {
     var contentTitles = ["STEP 1", "STEP 2", "STEP 3", "STEP 4"]
     var contentImages = ["Page0", "Page1", "Page2", "Page3"]
     
+    @IBAction func clickBtnStart(_ sender: Any) {
+        let ud = UserDefaults.standard
+        ud.set(true, forKey: UserInfoKey.tutorial)
+        ud.synchronize()
+        
+        self.presentingViewController?.dismiss(animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.pageVC = self.instanceSbTutorial(name: "PageVC") as! UIPageViewController
+        self.pageVC.dataSource = self
+        
+        let startContentVC = self.getContentVC(atIndex: 0)!     // initial View Controller
+        self.pageVC.setViewControllers([startContentVC], direction: .forward, animated: true)
+        
+        self.pageVC.view.frame.origin = CGPoint(x: 0, y: 0)
+        self.pageVC.view.frame.size.width = self.view.frame.width
+        self.pageVC.view.frame.size.height = self.view.frame.height - 200
+        
+        self.addChild(self.pageVC)
+        self.view.addSubview(self.pageVC.view)
+        self.pageVC.didMove(toParent: self)
     }
     
     func getContentVC(atIndex idx: Int) -> UIViewController? {
@@ -36,14 +56,39 @@ class TutorialMasterVC: UIViewController, UIPageViewControllerDataSource {
         return cvc
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard var index = (viewController as! TutorialContentVC).pageIndex else {
+            return nil
+        }
+        
+        guard index > 0 else {
+            return nil
+        }
+        
+        index -= 1
+        
+        return self.getContentVC(atIndex: index)
     }
-    */
-
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard var index = (viewController as! TutorialContentVC).pageIndex else {
+            return nil
+        }
+        
+        index += 1
+        
+        guard index < self.contentTitles.count else {
+            return nil
+        }
+        
+        return self.getContentVC(atIndex: index)
+    }
+    
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return self.contentTitles.count
+    }
+    
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        return 0
+    }
 }
